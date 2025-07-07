@@ -1,2 +1,2 @@
 # Nuora
-A Social Midea App
+My Social Midea App
