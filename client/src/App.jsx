@@ -43,6 +43,10 @@ const App = () => {
   },[pathname])
 
   useEffect(()=>{
+    console.log(user, "user")
+  }, [user]);
+
+  useEffect(()=>{
     if(user){
       const eventSource = new EventSource(import.meta.env.VITE_BASEURL + '/api/message/' + user.id);
 
@@ -67,7 +71,7 @@ const App = () => {
     <>
       <Toaster />
       <Routes>
-        <Route path='/' element={ !user ? <Login /> : <Layout/>}>
+        <Route path='/' element={<Login />}>
           <Route index element={<Feed/>}/>
           <Route path='messages' element={<Messages/>}/>
           <Route path='messages/:userId' element={<ChatBox/>}/>
@@ -76,7 +80,7 @@ const App = () => {
           <Route path='profile' element={<Profile/>}/>
           <Route path='profile/:profileId' element={<Profile/>}/>
           <Route path='create-post' element={<CreatePost/>}/>
-        </Route>
+        </Route> 
       </Routes>
     </>
   )

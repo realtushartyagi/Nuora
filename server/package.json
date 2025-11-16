@@ -14,15 +14,16 @@
   "dependencies": {
     "@clerk/express": "^1.7.13",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "imagekit": "^6.0.0",
-    "inngest": "^3.40.1",
-    "mongoose": "^8.18.2",
+    "inngest": "^3.45.1",
+    "mongoose": "^8.19.4",
     "multer": "^2.0.2",
+    "ngrok": "^5.0.0-beta.2",
     "nodemailer": "^7.0.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.11"
   }
 }

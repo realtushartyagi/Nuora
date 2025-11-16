@@ -100,7 +100,7 @@ const Profile = () => {
       {/* Edit Profile Modal */}
       {showEdit && <ProfileModal setShowEdit={setShowEdit}/>}
     </div>
-  ) : (<Loading />)
+  ) : (<h1>Hello</h1>)
 }
 
 export default Profile
