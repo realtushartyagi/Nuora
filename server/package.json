@@ -12,7 +12,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@clerk/express": "^1.7.13",
+    "@clerk/express": "^1.7.49",
+    "@reduxjs/toolkit": "^2.10.1",
+    "axios": "^1.13.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
@@ -21,7 +23,8 @@
     "mongoose": "^8.19.4",
     "multer": "^2.0.2",
     "ngrok": "^5.0.0-beta.2",
-    "nodemailer": "^7.0.5"
+    "nodemailer": "^7.0.10",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
