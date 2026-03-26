@@ -71,7 +71,7 @@ const App = () => {
     <>
       <Toaster />
       <Routes>
-        <Route path='/' element={<Login />}>
+        <Route path='/' element={user ? <Layout /> : <Login />}>
           <Route index element={<Feed/>}/>
           <Route path='messages' element={<Messages/>}/>
           <Route path='messages/:userId' element={<ChatBox/>}/>

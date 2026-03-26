@@ -23,7 +23,7 @@ const Login = () => {
                 </div>
             </div>
             <h1 className='text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-indigo-950 to-indigo-800 bg-clip-text text-transparent'>More than just friends truly connect</h1>
-            <p className='text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md'>connect with global community on pingup.</p>
+            <p className='text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md'>connect with global community on Nuora.</p>
         </div>
         <span className='md:h-10'></span>
       </div>

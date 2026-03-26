@@ -11,10 +11,29 @@ import { clerkClient } from "@clerk/express";
 export const getUserData = async (req, res) => {
     try {
         const { userId } = req.auth()
-        const user = await User.findById(userId)
+        let user = await User.findById(userId)
+        
         if(!user){
-            return res.json({success: false, message: "User not found"})
+            const clerkUser = await clerkClient.users.getUser(userId)
+            if(clerkUser){
+                let username = clerkUser.emailAddresses[0].emailAddress.split('@')[0]
+                const existingUser = await User.findOne({username})
+                if (existingUser) {
+                    username = username + Math.floor(Math.random() * 10000)
+                }
+                const userData = {
+                    _id: userId,
+                    email: clerkUser.emailAddresses[0].emailAddress,
+                    full_name: clerkUser.firstName + " " + clerkUser.lastName,
+                    profile_picture: clerkUser.imageUrl,
+                    username
+                }
+                user = await User.create(userData)
+            } else {
+                return res.json({success: false, message: "User not found"})
+            }
         }
+        
         res.json({success: true, user})
     } catch (error) {
         console.log(error);
