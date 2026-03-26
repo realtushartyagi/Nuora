@@ -66,7 +66,7 @@ export default function CreatePostPage() {
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
           {/* User Header */}
           <div className='p-6 flex items-center gap-3'>
-             <UserButton afterSignOutUrl="/login" />
+             <UserButton />
              <div className='leading-tight'>
                 <h2 className='font-bold text-slate-900'>Your Profile</h2>
                 <p className='text-xs text-slate-400 font-bold uppercase tracking-wider'>Sharing Publicly</p>

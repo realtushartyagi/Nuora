@@ -9,7 +9,7 @@ import { useAppDispatch } from '@/store/hooks'
 import { fetchUser } from '@/store/slices/userSlice'
 import { useRouter } from 'next/navigation'
 
-const UserCard = ({ user }: { user: any }) => {
+const UserCard = ({ user, onUpdate, isRequest }: { user: any, onUpdate?: () => void | Promise<void>, isRequest?: boolean }) => {
     const { getToken } = useAuth()
     const { user: clerkUser } = useUser()
     const dispatch = useAppDispatch()
@@ -24,6 +24,7 @@ const UserCard = ({ user }: { user: any }) => {
             if (data.success) {
                 toast.success(data.message)
                 if (token) dispatch(fetchUser(token))
+                if (onUpdate) onUpdate()
             } else {
                 toast.error(data.message)
             }
@@ -64,7 +65,7 @@ const UserCard = ({ user }: { user: any }) => {
                     className='flex-1 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:from-indigo-600 hover:to-purple-700 transition-all flex items-center justify-center gap-1 active:scale-95 cursor-pointer shadow-md shadow-indigo-100'
                 >
                     <Plus className='w-4 h-4' />
-                    Connect
+                    {isRequest ? 'Accept' : 'Connect'}
                 </button>
             </div>
         </div>

@@ -34,7 +34,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
       <div className='w-full border-t border-gray-100 p-4 px-7 flex items-center justify-between bg-slate-50/50'>
         <div onClick={() => { if(user) { router.push('/profile/' + user._id); setSidebarOpen(false); } }} className='flex gap-2.5 items-center cursor-pointer group'>
           <div className="relative" onClick={(e) => e.stopPropagation()}>
-             <UserButton afterSignOutUrl="/login" />
+             <UserButton />
           </div>
           {user && (
             <div className="transition-all group-hover:translate-x-0.5">
