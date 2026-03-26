@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import MainLayout from '@/components/MainLayout'
-import UserCard from '@/components/UserCard'
+import NuoraUserCard from '@/components/NuoraUserCard'
 import { api } from '@/lib/api'
 import { useAuth } from '@clerk/nextjs'
 import Loading from '@/components/Loading'
@@ -81,7 +81,7 @@ export default function ConnectionsPage() {
             {activeTab === 'connections' ? (
               connections.length > 0 ? (
                 connections.map((user: any) => (
-                  <UserCard key={user._id} user={user} onUpdate={fetchConnections} />
+                  <NuoraUserCard key={user._id} user={user} onUpdate={fetchConnections} />
                 ))
               ) : (
                 <p className="col-span-full text-center py-10 text-gray-500">No connections yet.</p>
@@ -89,7 +89,7 @@ export default function ConnectionsPage() {
             ) : (
               requests.length > 0 ? (
                 requests.map((user: any) => (
-                  <UserCard 
+                  <NuoraUserCard 
                     key={user._id} 
                     user={user} 
                     isRequest 

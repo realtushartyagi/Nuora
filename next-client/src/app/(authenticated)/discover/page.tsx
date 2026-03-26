@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import MainLayout from '@/components/MainLayout'
-import UserCard from '@/components/UserCard'
+import NuoraUserCard from '@/components/NuoraUserCard'
 import { api } from '@/lib/api'
 import { useAuth } from '@clerk/nextjs'
 import { Search } from 'lucide-react'
@@ -69,7 +69,7 @@ export default function DiscoverPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {users.length > 0 ? (
               users.map((user: any) => (
-                <UserCard key={user._id} user={user} />
+                <NuoraUserCard key={user._id} user={user} />
               ))
             ) : (
               <p className="col-span-full text-center py-10 text-gray-500">No users found.</p>

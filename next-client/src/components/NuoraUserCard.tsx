@@ -9,7 +9,7 @@ import { useAppDispatch } from '@/store/hooks'
 import { fetchUser } from '@/store/slices/userSlice'
 import { useRouter } from 'next/navigation'
 
-const UserCard = ({ user, onUpdate, isRequest }: { user: any, onUpdate?: () => void | Promise<void>, isRequest?: boolean }) => {
+const NuoraUserCard = ({ user, onUpdate, isRequest }: { user: any, onUpdate?: () => void | Promise<void>, isRequest?: boolean }) => {
     const { getToken } = useAuth()
     const { user: clerkUser } = useUser()
     const dispatch = useAppDispatch()
@@ -72,4 +72,4 @@ const UserCard = ({ user, onUpdate, isRequest }: { user: any, onUpdate?: () => v
     )
 }
 
-export default UserCard
+export default NuoraUserCard
