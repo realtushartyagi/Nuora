@@ -101,13 +101,22 @@ export const getChatMessages = async (req, res) => {
     }
 }
 
+import { syncUserWithClerk } from "../utils/userSync.js";
+
 export const getUserRecentMessages = async (req, res) => {
     try {
         const { userId } = req.auth();
+        const user = await syncUserWithClerk(userId);
+        
+        if (!user) {
+            return res.json({ success: false, message: "User not found" });
+        }
+
         const messages = await Message.find({to_user_id: userId}).populate('from_user_id to_user_id').sort({ created_at: -1 });
 
         res.json({ success: true, messages });
     } catch (error) {
+        console.log(error);
         res.json({ success: false, message: error.message });
     }
 }

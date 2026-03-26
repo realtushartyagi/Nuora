@@ -5,39 +5,23 @@ import Post from "../models/Post.js"
 import User from "../models/User.js"
 import fs from 'fs'
 import { clerkClient } from "@clerk/express";
+import { syncUserWithClerk } from "../utils/userSync.js";
 
 
 // Get User Data using userId
 export const getUserData = async (req, res) => {
     try {
         const { userId } = req.auth()
-        let user = await User.findById(userId)
+        const user = await syncUserWithClerk(userId);
         
-        if(!user){
-            const clerkUser = await clerkClient.users.getUser(userId)
-            if(clerkUser){
-                let username = clerkUser.emailAddresses[0].emailAddress.split('@')[0]
-                const existingUser = await User.findOne({username})
-                if (existingUser) {
-                    username = username + Math.floor(Math.random() * 10000)
-                }
-                const userData = {
-                    _id: userId,
-                    email: clerkUser.emailAddresses[0].emailAddress,
-                    full_name: clerkUser.firstName + " " + clerkUser.lastName,
-                    profile_picture: clerkUser.imageUrl,
-                    username
-                }
-                user = await User.create(userData)
-            } else {
-                return res.json({success: false, message: "User not found"})
-            }
+        if (!user) {
+            return res.json({ success: false, message: "User not found" });
         }
         
-        res.json({success: true, user})
+        res.json({ success: true, user })
     } catch (error) {
         console.log(error);
-        res.json({success: false, message: error.message})
+        res.json({ success: false, message: error.message })
     }
 }
 
@@ -150,7 +134,7 @@ export const followUser = async (req, res) => {
         const { userId } = req.auth()
         const { id } = req.body;
 
-        const user = await User.findById(userId)
+        const user = await syncUserWithClerk(userId)
 
         if(user.following.includes(id)){
             return res.json({ success: false, message: 'You are already following this user'})
@@ -177,7 +161,7 @@ export const unfollowUser = async (req, res) => {
         const { userId } = req.auth()
         const { id } = req.body;
 
-        const user = await User.findById(userId)
+        const user = await syncUserWithClerk(userId)
         user.following = user.following.filter(user=> user !== id);
         await user.save()
 
@@ -243,6 +227,7 @@ export const getUserConnections = async (req, res) => {
     try {
         const {userId} = req.auth()
         console.log(userId, "userId");
+        await syncUserWithClerk(userId)
         const user = await User.findById(userId).populate('connections followers following')
         console.log(user, "user");
 
@@ -297,7 +282,7 @@ export const acceptConnectionRequest = async (req, res) => {
 export const getUserProfiles = async (req, res) =>{
     try {
         const { profileId } = req.body;
-        const profile = await User.findById(profileId)
+        const profile = await syncUserWithClerk(profileId)
         if(!profile){
             return res.json({ success: false, message: "Profile not found" });
         }

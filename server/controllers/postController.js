@@ -48,11 +48,17 @@ export const addPost = async (req, res) => {
     }
 }
 
+import { syncUserWithClerk } from "../utils/userSync.js";
+
 // Get Posts
 export const getFeedPosts = async (req, res) =>{
     try {
         const { userId } = req.auth()
-        const user = await User.findById(userId)
+        const user = await syncUserWithClerk(userId)
+
+        if (!user) {
+            return res.json({ success: false, message: "User not found" });
+        }
 
         // User connections and followings 
         const userIds = [userId, ...user.connections, ...user.following]

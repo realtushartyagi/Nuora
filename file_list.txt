@@ -1,0 +1,2 @@
+D:\nra\Nuora\next-client\src\app\(authenticated)
+D:\nra\Nuora\next-client\src\app\login

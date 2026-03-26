@@ -3,6 +3,7 @@ import imagekit from "../configs/imageKit.js";
 import Story from "../models/Story.js";
 import User from "../models/User.js";
 import { inngest } from "../inngest/index.js";
+import { syncUserWithClerk } from "../utils/userSync.js";
 
 // Add User Story
 export const addUserStory = async (req, res) =>{
@@ -48,7 +49,11 @@ export const addUserStory = async (req, res) =>{
 export const getStories = async (req, res) =>{
     try {
         const { userId } = req.auth();
-        const user = await User.findById(userId)
+        const user = await syncUserWithClerk(userId)
+
+        if (!user) {
+            return res.json({ success: false, message: "User not found" });
+        }
 
         // User connections and followings 
         const userIds = [userId, ...user.connections, ...user.following]

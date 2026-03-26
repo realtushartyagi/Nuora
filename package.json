@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@clerk/clerk-react": "^5.48.1",
-    "ngrok": "^5.0.0-beta.2"
-  }
-}
