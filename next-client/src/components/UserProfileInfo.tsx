@@ -19,7 +19,18 @@ const UserProfileInfo = ({ profileData, isMe, onUpdate }: UserProfileInfoProps) 
     return (
         <div className='relative bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden'>
             {/* Cover Photo Backdrop */}
-            <div className='h-48 w-full bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'></div>
+            <div className='h-48 md:h-64 w-full relative overflow-hidden bg-slate-100'>
+                {profileData.cover_photo ? (
+                    <img 
+                        src={profileData.cover_photo} 
+                        alt="Profile Cover" 
+                        className='w-full h-full object-cover transition-transform duration-500 hover:scale-105' 
+                    />
+                ) : (
+                    <div className='w-full h-full bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'></div>
+                )}
+                <div className="absolute inset-0 bg-black/5"></div>
+            </div>
 
             <div className='px-6 md:px-10 pb-8'>
                 <div className='relative flex flex-col md:flex-row items-end -mt-16 gap-6 mb-6'>

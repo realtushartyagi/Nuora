@@ -17,7 +17,7 @@ const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
     const dispatch = useAppDispatch();
     const { getToken } = useAuth()
     const user = useAppSelector((state) => state.user.value)
-
+    
     const [editForm, setEditForm] = useState<any>({
         username: initialData?.username || user?.username || '',
         bio: initialData?.bio || user?.bio || '',
@@ -26,6 +26,19 @@ const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
         cover_photo: null,
         full_name: initialData?.full_name || user?.full_name || '',
     })
+
+    // Sync form state if initialData is provided later or changes
+    useEffect(() => {
+        if (initialData) {
+            setEditForm((prev: any) => ({
+                ...prev,
+                username: initialData.username || prev.username,
+                full_name: initialData.full_name || prev.full_name,
+                bio: initialData.bio || prev.bio,
+                location: initialData.location || prev.location,
+            }))
+        }
+    }, [initialData])
 
     useEffect(() => {
         if (user && !initialData) {
@@ -103,7 +116,7 @@ const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
                                 <input hidden type="file" accept="image/*" id="cover_photo" onChange={(e) => e.target.files && setEditForm({ ...editForm, cover_photo: e.target.files[0] })} />
                                 <div className='group relative mx-auto mt-2 cursor-pointer w-full'>
                                     <img 
-                                      src={editForm.cover_photo ? URL.createObjectURL(editForm.cover_photo) : user.cover_photo} 
+                                      src={editForm.cover_photo ? URL.createObjectURL(editForm.cover_photo) : initialData.cover_photo || user.cover_photo} 
                                       alt="" 
                                       className='w-full h-32 rounded-xl bg-slate-100 object-cover shadow-sm' 
                                     />

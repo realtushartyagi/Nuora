@@ -9,7 +9,7 @@ export interface User {
     email: string;
     profile_picture: string;
     bio?: string;
-    cover_image?: string;
+    cover_photo?: string;
     [key: string]: any;
 }
 
