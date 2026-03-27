@@ -34,6 +34,9 @@ export const updateUserData = async (req, res) => {
         const tempUser = await User.findById(userId)
 
         !username && (username = tempUser.username)
+        !full_name && (full_name = tempUser.full_name)
+        !bio && (bio = tempUser.bio)
+        !location && (location = tempUser.location)
 
         if(tempUser.username !== username){
             const user = await User.findOne({username})

@@ -8,26 +8,27 @@ import { useAuth } from '@clerk/nextjs';
 import toast from 'react-hot-toast';
 
 interface ProfileModalProps {
+    initialData?: any;
     setShowEdit: (show: boolean) => void;
 }
 
-const ProfileModal = ({ setShowEdit }: ProfileModalProps) => {
+const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
 
     const dispatch = useAppDispatch();
     const { getToken } = useAuth()
     const user = useAppSelector((state) => state.user.value)
 
     const [editForm, setEditForm] = useState<any>({
-        username: user?.username || '',
-        bio: user?.bio || '',
-        location: user?.location || '',
+        username: initialData?.username || user?.username || '',
+        bio: initialData?.bio || user?.bio || '',
+        location: initialData?.location || user?.location || '',
         profile_picture: null,
         cover_photo: null,
-        full_name: user?.full_name || '',
+        full_name: initialData?.full_name || user?.full_name || '',
     })
 
     useEffect(() => {
-        if (user) {
+        if (user && !initialData) {
             setEditForm((prev: any) => ({
                 ...prev,
                 username: user.username || prev.username,
@@ -36,7 +37,7 @@ const ProfileModal = ({ setShowEdit }: ProfileModalProps) => {
                 location: user.location || prev.location,
             }))
         }
-    }, [user])
+    }, [user, initialData])
 
 
     if (!user) return null;
@@ -56,7 +57,7 @@ const ProfileModal = ({ setShowEdit }: ProfileModalProps) => {
 
             const token = await getToken()
             if (token) {
-                dispatch(updateUser({ userData, token }))
+                await dispatch(updateUser({ userData, token })).unwrap()
             }
 
             setShowEdit(false)

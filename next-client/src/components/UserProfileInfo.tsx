@@ -81,7 +81,7 @@ const UserProfileInfo = ({ profileData, isMe, onUpdate }: UserProfileInfoProps) 
                     </div>
                 </div>
             </div>
-            {showEdit && <ProfileModal setShowEdit={(val) => { setShowEdit(val); if(!val) onUpdate(); }} />}
+            {showEdit && <ProfileModal initialData={profileData} setShowEdit={(val) => { setShowEdit(val); if(!val) onUpdate(); }} />}
         </div>
     )
 }
