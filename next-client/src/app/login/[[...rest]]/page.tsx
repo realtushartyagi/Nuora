@@ -51,31 +51,34 @@ const LoginPage = () => {
                 <h2 className='text-3xl font-extrabold text-[#111827] mb-2 text-center tracking-tight'>Sign in to Nuora</h2>
                 <p className='text-gray-500 mb-8 text-center text-sm font-medium'>Welcome back! Please sign in to continue</p>
                 
-                <SignIn 
-                  path="/login"
-                  routing="path"
-                  signUpUrl="/sign-up"
-                  appearance={{
-                    elements: {
-                      rootBox: 'w-full',
-                      card: 'bg-transparent shadow-none border-0 p-0 w-full',
-                      headerTitle: 'hidden',
-                      headerSubtitle: 'hidden',
-                      socialButtonsBlockButton: 'bg-white border border-gray-200 text-[#374151] hover:bg-gray-50 transition-all h-12 rounded-xl shadow-sm mb-4',
-                      socialButtonsBlockButtonText: 'font-semibold text-[15px]',
-                      dividerLine: 'bg-gray-100',
-                      dividerText: 'text-gray-400 font-medium text-xs',
-                      formFieldLabel: 'text-[#374151] font-bold mb-2 text-sm',
-                      formFieldInput: 'bg-white border-gray-200 text-gray-900 focus:border-indigo-500/30 focus:ring-4 focus:ring-indigo-500/5 transition-all h-12 rounded-xl text-base px-4 font-medium',
-                      formButtonPrimary: 'bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] hover:opacity-90 active:scale-[0.98] transition-all duration-300 shadow-xl shadow-indigo-500/20 border-0 h-12 text-[15px] font-bold mt-4 rounded-xl normal-case relative after:content-["→"] after:ml-2 after:text-lg',
-                      footerActionLink: 'text-indigo-600 hover:text-indigo-500 font-bold ml-1',
-                      identityPreviewText: 'text-gray-900',
-                      identityPreviewEditButtonIcon: 'text-gray-900',
-                      footer: 'mt-6 border-t border-gray-50 pt-6 text-center w-full flex justify-center',
-                      clerkBranding: 'hidden'
-                    }
-                  }}
-                />
+                <div className="mb-6">
+                  <SignIn 
+                    path="/login"
+                    routing="path"
+                    signUpUrl="/sign-up"
+                    appearance={{
+                      elements: {
+                        rootBox: 'w-full',
+                        card: 'bg-transparent shadow-none border-0 p-0 w-full',
+                        headerTitle: 'hidden',
+                        headerSubtitle: 'hidden',
+                        socialButtonsBlockButton: 'bg-white border-2 border-indigo-100 text-[#374151] hover:bg-indigo-50 hover:border-indigo-200 transition-all h-14 rounded-2xl shadow-sm mb-4 active:scale-[0.98]',
+                        socialButtonsBlockButtonText: 'font-bold text-[16px] text-slate-700',
+                        dividerLine: 'bg-slate-100 h-[2px]',
+                        dividerText: 'text-slate-400 font-bold text-[11px] uppercase tracking-widest bg-white px-4',
+                        formFieldLabel: 'text-[#374151] font-bold mb-2 text-sm',
+                        formFieldInput: 'bg-slate-50 border-slate-100 text-gray-900 focus:border-indigo-500/30 focus:ring-4 focus:ring-indigo-500/5 transition-all h-12 rounded-xl text-base px-4 font-medium',
+                        formButtonPrimary: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-indigo-200 active:scale-[0.98] transition-all duration-300 h-12 text-[15px] font-bold mt-4 rounded-xl normal-case relative overflow-hidden',
+                        footerActionLink: 'text-indigo-600 hover:text-indigo-500 font-bold ml-1',
+                        identityPreviewText: 'text-gray-900',
+                        identityPreviewEditButtonIcon: 'text-gray-900',
+                        footer: 'mt-6 border-t border-gray-50 pt-6 text-center w-full flex justify-center',
+                        clerkBranding: 'hidden'
+                      }
+                    }}
+                  />
+                </div>
+
               </div>
             </div>
           </div>

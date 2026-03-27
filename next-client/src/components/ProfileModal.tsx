@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Pencil, X } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { updateUser } from '@/store/slices/userSlice';
@@ -25,6 +25,19 @@ const ProfileModal = ({ setShowEdit }: ProfileModalProps) => {
         cover_photo: null,
         full_name: user?.full_name || '',
     })
+
+    useEffect(() => {
+        if (user) {
+            setEditForm((prev: any) => ({
+                ...prev,
+                username: user.username || prev.username,
+                full_name: user.full_name || prev.full_name,
+                bio: user.bio || prev.bio,
+                location: user.location || prev.location,
+            }))
+        }
+    }, [user])
+
 
     if (!user) return null;
 
