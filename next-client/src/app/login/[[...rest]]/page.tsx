@@ -5,53 +5,67 @@ import { SignIn } from '@clerk/nextjs'
 
 const LoginPage = () => {
   return (
-    <div className='min-h-screen flex flex-col md:flex-row bg-gradient-to-br from-[#f3e8ff] via-white to-[#e0f2fe] relative overflow-hidden font-outfit'>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] relative overflow-hidden font-outfit p-4 sm:p-6 lg:p-8'>
       
-      {/* Container for both sections */}
-      <div className='flex-1 flex flex-col md:flex-row w-full max-w-7xl mx-auto z-10'>
+      {/* Background decoration elements */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-200/30 blur-[120px] animate-pulse" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-200/30 blur-[120px] animate-pulse" />
+      
+      {/* Main Container */}
+      <div className='w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center z-10'>
         
-        {/* Left Side: Branding Area */}
-        <div className='flex-1 hidden md:flex flex-col items-center justify-center p-10 relative z-10'>
-          <div className='max-w-xl text-center relative'>
-            {/* Logo Desktop */}
-            <div className='flex items-center gap-3 mb-12 justify-center'>
-              <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl shadow-purple-500/30'>
-                  <div className='w-6 h-6 border-2 border-white rounded-full' />
-              </div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-900 to-indigo-800 bg-clip-text text-transparent tracking-tight">Nuora</h1>
+        {/* Left Side: Branding (Visible on Hero screens) */}
+        <div className='hidden lg:flex flex-col space-y-8 animate-in fade-in slide-in-from-left duration-1000'>
+          <div className='flex items-center gap-4'>
+            <div className='w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-2xl shadow-indigo-500/20'>
+                <div className='w-7 h-7 border-[3px] border-white rounded-full' />
             </div>
+            <h1 className="text-5xl font-black text-slate-900 tracking-tight">Nuora</h1>
+          </div>
 
-            <div className='space-y-6'>
-              <h1 className='text-5xl lg:text-7xl font-bold text-indigo-950 leading-[1.1] tracking-tight'>
-                Where Connections <br/>
-                <span className='bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent'>Feel Real.</span>
-              </h1>
-              <p className='text-xl lg:text-2xl text-indigo-900/60 font-light'>
-                Not just social. It's emotional. <br/>
-                Your new living social universe.
-              </p>
+          <div className='space-y-6'>
+            <h2 className='text-6xl xl:text-7xl font-bold text-slate-900 leading-tight tracking-tight'>
+              Where Connections <br/>
+              <span className='bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent'>Matter More.</span>
+            </h2>
+            <p className='text-xl xl:text-2xl text-slate-600 font-medium max-w-md leading-relaxed'>
+              Experience a social universe built on real emotions and authentic connections. 
+            </p>
+          </div>
+
+          {/* Feature highlights */}
+          <div className="grid grid-cols-2 gap-6 pt-8">
+            <div className="p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/50 shadow-sm">
+                <p className="text-2xl font-bold text-slate-900">10k+</p>
+                <p className="text-sm text-slate-500 font-semibold">Active Users</p>
+            </div>
+            <div className="p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/50 shadow-sm">
+                <p className="text-2xl font-bold text-slate-900">50k+</p>
+                <p className="text-sm text-slate-500 font-semibold">Real Stories</p>
             </div>
           </div>
         </div>
 
         {/* Right Side: Login Card */}
-        <div className='flex-1 flex items-center justify-center p-6 lg:p-12'>
-          <div className='w-full max-w-[480px]'>
-            <div className='bg-white rounded-[2.5rem] shadow-[20px_40px_80px_rgba(0,0,0,0.08)] border border-white/50 p-8 md:p-10 relative overflow-hidden'>
+        <div className='flex items-center justify-center lg:justify-end animate-in fade-in slide-in-from-right duration-1000'>
+          <div className='w-full max-w-[460px]'>
+            <div className='bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-white p-8 sm:p-12 relative'>
               
               <div className='relative'>
                 {/* Mobile-only Logo */}
-                <div className='md:hidden flex items-center gap-2 mb-8 justify-center'>
-                  <div className='w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/20'>
-                    <div className='w-5 h-5 border-2 border-white rounded-full' />
+                <div className='lg:hidden flex flex-col items-center gap-4 mb-10'>
+                  <div className='w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl shadow-indigo-500/20'>
+                    <div className='w-6 h-6 border-[3px] border-white rounded-full' />
                   </div>
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-900 to-indigo-800 bg-clip-text text-transparent tracking-tight">Nuora</h1>
+                  <h1 className="text-3xl font-black text-slate-900 tracking-tight">Nuora</h1>
                 </div>
 
-                <h2 className='text-3xl font-extrabold text-[#111827] mb-2 text-center tracking-tight'>Sign in to Nuora</h2>
-                <p className='text-gray-500 mb-8 text-center text-sm font-medium'>Welcome back! Please sign in to continue</p>
+                <div className="text-center mb-8">
+                    <h2 className='text-3xl font-bold text-slate-900 tracking-tight'>Sign In</h2>
+                    <p className='text-slate-500 mt-2 font-medium'>Unlock your social universe</p>
+                </div>
                 
-                <div className="mb-6">
+                <div className="w-full">
                   <SignIn 
                     path="/login"
                     routing="path"
@@ -60,34 +74,29 @@ const LoginPage = () => {
                       elements: {
                         rootBox: 'w-full',
                         card: 'bg-transparent shadow-none border-0 p-0 w-full',
-                        headerTitle: 'hidden',
-                        headerSubtitle: 'hidden',
-                        socialButtonsBlockButton: 'bg-white border-2 border-indigo-100 text-[#374151] hover:bg-indigo-50 hover:border-indigo-200 transition-all h-14 rounded-2xl shadow-sm mb-4 active:scale-[0.98]',
-                        socialButtonsBlockButtonText: 'font-bold text-[16px] text-slate-700',
-                        dividerLine: 'bg-slate-100 h-[2px]',
-                        dividerText: 'text-slate-400 font-bold text-[11px] uppercase tracking-widest bg-white px-4',
-                        formFieldLabel: 'text-[#374151] font-bold mb-2 text-sm',
-                        formFieldInput: 'bg-slate-50 border-slate-100 text-gray-900 focus:border-indigo-500/30 focus:ring-4 focus:ring-indigo-500/5 transition-all h-12 rounded-xl text-base px-4 font-medium',
-                        formButtonPrimary: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-indigo-200 active:scale-[0.98] transition-all duration-300 h-12 text-[15px] font-bold mt-4 rounded-xl normal-case relative overflow-hidden',
-                        footerActionLink: 'text-indigo-600 hover:text-indigo-500 font-bold ml-1',
-                        identityPreviewText: 'text-gray-900',
-                        identityPreviewEditButtonIcon: 'text-gray-900',
-                        footer: 'mt-6 border-t border-gray-50 pt-6 text-center w-full flex justify-center',
+                        header: 'hidden',
+                        socialButtonsBlockButton: 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all h-14 rounded-2xl shadow-sm mb-4 active:scale-[0.98]',
+                        socialButtonsBlockButtonText: 'font-bold text-[16px]',
+                        dividerLine: 'bg-slate-200 h-[1px]',
+                        dividerText: 'text-slate-400 font-bold text-[12px] uppercase tracking-widest bg-white px-3',
+                        formFieldLabel: 'text-slate-700 font-bold mb-2 text-[13px] ml-1',
+                        formFieldInput: 'bg-slate-50/50 border-slate-200 text-slate-900 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all h-13 rounded-2xl text-base px-4 font-medium',
+                        formButtonPrimary: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-xl hover:shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300 h-13 text-[16px] font-bold mt-4 rounded-2xl normal-case',
+                        footerActionLink: 'text-indigo-600 hover:text-indigo-700 font-bold ml-1 transition-colors',
+                        footerActionText: 'text-slate-500 font-semibold',
+                        identityPreviewText: 'text-slate-900 font-semibold',
+                        identityPreviewEditButtonIcon: 'text-indigo-600',
+                        footer: 'mt-8 border-t border-slate-100 pt-8 flex justify-center',
                         clerkBranding: 'hidden'
                       }
                     }}
                   />
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Background decoration */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-200/40 blur-[120px]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-200/40 blur-[120px]" />
     </div>
   )
 }

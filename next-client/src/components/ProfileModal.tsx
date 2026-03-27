@@ -27,9 +27,9 @@ const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
         full_name: initialData?.full_name || user?.full_name || '',
     })
 
-    // Sync form state if initialData is provided later or changes
+    // Sync form state only when the modal is first opened or data arrives
     useEffect(() => {
-        if (initialData) {
+        if (initialData && !editForm.full_name && !editForm.username) {
             setEditForm((prev: any) => ({
                 ...prev,
                 username: initialData.username || prev.username,
@@ -41,7 +41,7 @@ const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
     }, [initialData])
 
     useEffect(() => {
-        if (user && !initialData) {
+        if (user && !initialData && !editForm.full_name && !editForm.username) {
             setEditForm((prev: any) => ({
                 ...prev,
                 username: user.username || prev.username,
@@ -128,26 +128,50 @@ const ProfileModal = ({ initialData, setShowEdit }: ProfileModalProps) => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
-                            <input type="text" className='w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all' placeholder='Enter your full name' onChange={(e) => setEditForm({ ...editForm, full_name: e.target.value })} value={editForm.full_name} />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div className="flex flex-col">
+                            <label className="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Full Name</label>
+                            <input 
+                                type="text" 
+                                className='w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-400' 
+                                placeholder='Enter your full name' 
+                                onChange={(e) => setEditForm({ ...editForm, full_name: e.target.value })} 
+                                value={editForm.full_name} 
+                            />
                         </div>
-
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Username</label>
-                            <input type="text" className='w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all' placeholder='Choose a username' onChange={(e) => setEditForm({ ...editForm, username: e.target.value })} value={editForm.username} />
+                        
+                        <div className="flex flex-col">
+                            <label className="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Username</label>
+                            <input 
+                                type="text" 
+                                className='w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-400' 
+                                placeholder='Choose a username' 
+                                onChange={(e) => setEditForm({ ...editForm, username: e.target.value })} 
+                                value={editForm.username} 
+                            />
                         </div>
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Bio</label>
-                        <textarea rows={3} className='w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none' placeholder='Describe yourself...' onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })} value={editForm.bio} />
+                    <div className="flex flex-col">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Bio</label>
+                        <textarea 
+                            rows={3} 
+                            className='w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all resize-none placeholder:text-slate-400' 
+                            placeholder='Describe yourself...' 
+                            onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })} 
+                            value={editForm.bio} 
+                        />
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Location</label>
-                        <input type="text" className='w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all' placeholder='City, Country' onChange={(e) => setEditForm({ ...editForm, location: e.target.value })} value={editForm.location} />
+                    <div className="flex flex-col">
+                        <label className="block text-sm font-semibold text-gray-700 mb-1.5 ml-1">Location</label>
+                        <input 
+                            type="text" 
+                            className='w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-400' 
+                            placeholder='City, Country' 
+                            onChange={(e) => setEditForm({ ...editForm, location: e.target.value })} 
+                            value={editForm.location} 
+                        />
                     </div>
 
                     <div className='flex justify-end space-x-3 pt-6 border-t border-slate-50'>
