@@ -35,6 +35,15 @@ export default function CreatePostPage() {
       formData.append('content', text)
       if (media) formData.append('images', media) // Backend expects 'images' (multipart)
 
+      // Determine and append post_type
+      let post_type = 'text'
+      if (text && media) {
+        post_type = 'text_with_image'
+      } else if (media) {
+        post_type = 'image'
+      }
+      formData.append('post_type', post_type)
+
       const res = await api.post('/post/add', formData, {
         headers: { 
           Authorization: `Bearer ${token}`,
