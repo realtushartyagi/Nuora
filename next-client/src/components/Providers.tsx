@@ -21,7 +21,7 @@ export default function Providers({
     <ClerkProvider>
       <Provider store={storeRef.current}>
         {children}
-        {typeof window !== 'undefined' && <Toaster />}
+        <Toaster />
       </Provider>
     </ClerkProvider>
   )
