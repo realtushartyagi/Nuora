@@ -47,7 +47,11 @@ export default function FeedPage() {
           <div className="mt-8 space-y-6">
             {posts.length > 0 ? (
               posts.map((post: any) => (
-                <PostCard key={post._id} post={post} />
+                <PostCard 
+                  key={post._id} 
+                  post={post} 
+                  onDelete={(postId) => setPosts(prev => prev.filter((p: any) => p._id !== postId))}
+                />
               ))
             ) : (
               <div className="text-center py-10 bg-white rounded-xl shadow-sm">
