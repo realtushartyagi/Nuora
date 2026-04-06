@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import MainLayout from '@/components/MainLayout'
 import NuoraUserCard from '@/components/NuoraUserCard'
 import { api } from '@/lib/api'
 import { useAuth } from '@clerk/nextjs'
@@ -36,8 +35,7 @@ export default function ConnectionsPage() {
   }, [getToken])
 
   return (
-    <MainLayout>
-      <div className="max-w-4xl mx-auto py-8 px-4">
+    <div className="max-w-4xl mx-auto py-8 px-4">
         <div className='mb-8'>
           <h1 className="text-3xl font-bold text-slate-900">Connections</h1>
           <p className="text-slate-500 mt-1 font-medium">Manage your network and discover new connections</p>
@@ -103,6 +101,5 @@ export default function ConnectionsPage() {
           </div>
         )}
       </div>
-    </MainLayout>
-  )
-}
+    )
+  }

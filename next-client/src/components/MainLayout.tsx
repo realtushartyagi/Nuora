@@ -19,6 +19,7 @@ export default function MainLayout({
   const dispatch = useAppDispatch()
   
   const [fetchError, setFetchError] = useState(false)
+  const [loadingUser, setLoadingUser] = useState(true)
   const user = useAppSelector((state) => state.user.value)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -34,16 +35,20 @@ export default function MainLayout({
         } catch (err) {
           console.error('Error fetching user data:', err)
           setFetchError(true)
+        } finally {
+          setLoadingUser(false)
         }
+      } else {
+        setLoadingUser(false)
       }
     }
-    if (isLoaded && clerkUser) {
+    if (isLoaded) {
       fetchData()
     }
   }, [clerkUser, isLoaded, getToken, dispatch])
 
-  // Stop loading if data is loaded OR if there was an error
-  if (!isLoaded || (clerkUser && !user && !fetchError)) {
+  // Stop loading if Clerk is loaded AND either user data is fetched OR a fetch error occurred
+  if (!isLoaded || loadingUser) {
     return <Loading />
   }
 
@@ -57,12 +62,12 @@ export default function MainLayout({
 
       {sidebarOpen ? (
         <X 
-          className='absolute top-3 right-3 p-2 z-[100] bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden cursor-pointer' 
+          className='absolute top-3 right-3 p-2 z-[100] bg-white rounded-md shadow w-10 h-10 text-gray-600 md:hidden cursor-pointer' 
           onClick={() => setSidebarOpen(false)} 
         />
       ) : (
         <Menu 
-          className='absolute top-3 right-3 p-2 z-[100] bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden cursor-pointer' 
+          className='absolute top-3 right-3 p-2 z-[100] bg-white rounded-md shadow w-10 h-10 text-gray-600 md:hidden cursor-pointer' 
           onClick={() => setSidebarOpen(true)} 
         />
       )}

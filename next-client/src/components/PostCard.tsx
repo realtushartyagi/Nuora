@@ -80,7 +80,7 @@ const PostCard = ({ post, onDelete }: { post: Post, onDelete?: (postId: string) 
     }
 
     return (
-        <div className='bg-white rounded-2xl shadow-sm border border-slate-100 p-5 space-y-4 w-full max-w-2xl relative'>
+        <div className='bg-white rounded-2xl shadow-sm border border-slate-100 p-5 space-y-4 w-full max-w-2xl relative transition-all duration-300 hover:shadow-md'>
             {/* User Info & Options */}
             <div className="flex items-start justify-between">
                 <div onClick={() => router.push('/profile/' + post.user._id)} className='inline-flex items-center gap-3 cursor-pointer group'>

@@ -21,11 +21,18 @@ const initialState: UserState = {
     value: null
 }
 
-export const fetchUser = createAsyncThunk('user/fetchUser', async (token: string) => {
-    const { data } = await api.get('/user/data', {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-    return data.success ? data.user : null
+export const fetchUser = createAsyncThunk('user/fetchUser', async (token: string, { rejectWithValue }) => {
+    try {
+        const { data } = await api.get('/user/data', {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        if (data.success) {
+            return data.user
+        }
+        return rejectWithValue(data.message || 'Failed to fetch user')
+    } catch (error: any) {
+        return rejectWithValue(error.message || 'Connect to server failed')
+    }
 })
 
 export const updateUser = createAsyncThunk('user/update', async ({ userData, token }: { userData: any, token: string }) => {

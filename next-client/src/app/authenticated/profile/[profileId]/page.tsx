@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import MainLayout from '@/components/MainLayout'
 import UserProfileInfo from '@/components/UserProfileInfo'
 import PostCard from '@/components/PostCard'
 import { api } from '@/lib/api'
@@ -47,8 +46,7 @@ export default function ProfilePage({ overrideId }: { overrideId?: string }) {
   if (loading) return <Loading />
 
   return (
-    <MainLayout>
-      <div className="max-w-4xl mx-auto pb-10 sm:px-4">
+    <div className="max-w-4xl mx-auto pb-10 sm:px-4">
         <UserProfileInfo 
           profileData={profileData} 
           isMe={currentUser?.id === profileId} 
@@ -103,6 +101,5 @@ export default function ProfilePage({ overrideId }: { overrideId?: string }) {
           )}
         </div>
       </div>
-    </MainLayout>
-  )
-}
+    )
+  }

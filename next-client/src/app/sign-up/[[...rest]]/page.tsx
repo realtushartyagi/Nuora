@@ -14,55 +14,47 @@ const SignUpPage = () => {
       {/* Main Container */}
       <div className='w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center z-10'>
         
-        {/* Left Side: Branding (Visible on Hero screens) */}
-        <div className='hidden lg:flex flex-col space-y-8 animate-in fade-in slide-in-from-left duration-1000'>
-          <div className='flex items-center gap-4'>
+        {/* Left Side: Branding */}
+        <div className='flex flex-col space-y-8 lg:space-y-12 py-10 lg:py-0 animate-in fade-in slide-in-from-left duration-700'>
+          <div className='flex items-center gap-4 justify-center lg:justify-start'>
             <div className='w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-2xl shadow-indigo-500/20'>
-                <div className='w-7 h-7 border-[3px] border-white rounded-full' />
+              <div className='w-7 h-7 border-[3px] border-white rounded-full' />
             </div>
             <h1 className="text-5xl font-black text-slate-900 tracking-tight">Nuora</h1>
           </div>
 
-          <div className='space-y-6'>
-            <h2 className='text-6xl xl:text-7xl font-bold text-slate-900 leading-tight tracking-tight'>
-              Join the <br/>
+          <div className='space-y-4 md:space-y-6 text-center lg:text-left'>
+            <h2 className='text-4xl md:text-6xl xl:text-7xl font-bold text-slate-900 leading-tight tracking-tight'>
+              Join the <br className='hidden md:block'/>
               <span className='bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent'>Revolution.</span>
             </h2>
-            <p className='text-xl xl:text-2xl text-slate-600 font-medium max-w-md leading-relaxed'>
+            <p className='text-lg md:text-xl xl:text-2xl text-slate-600 font-medium max-w-md mx-auto lg:mx-0 leading-relaxed'>
               Create your account and start building authentic connections in our growing social universe.
             </p>
           </div>
 
           {/* Feature highlights */}
-          <div className="grid grid-cols-2 gap-6 pt-8">
-            <div className="p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/50 shadow-sm">
-                <p className="text-2xl font-bold text-slate-900">Easy</p>
-                <p className="text-sm text-slate-500 font-semibold">Setup Process</p>
+          <div className="grid grid-cols-2 gap-4 md:gap-6 pt-6 md:pt-8 max-w-md mx-auto lg:mx-0">
+            <div className="p-4 md:p-6 bg-white/60 backdrop-blur-md rounded-[2rem] border border-white/50 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
+              <p className="text-2xl md:text-3xl font-black text-slate-900">Easy</p>
+              <p className="text-xs md:text-sm text-slate-500 font-bold uppercase tracking-wider">Setup Process</p>
             </div>
-            <div className="p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/50 shadow-sm">
-                <p className="text-2xl font-bold text-slate-900">Secure</p>
-                <p className="text-sm text-slate-500 font-semibold">Authentication</p>
+            <div className="p-4 md:p-6 bg-white/60 backdrop-blur-md rounded-[2rem] border border-white/50 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
+              <p className="text-2xl md:text-3xl font-black text-slate-900">Secure</p>
+              <p className="text-xs md:text-sm text-slate-500 font-bold uppercase tracking-wider">Authentication</p>
             </div>
           </div>
         </div>
 
         {/* Right Side: Sign Up Card */}
-        <div className='flex items-center justify-center lg:justify-end animate-in fade-in slide-in-from-right duration-1000'>
-          <div className='w-full max-w-[460px]'>
-            <div className='bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-white p-8 sm:p-12 relative'>
+        <div className='flex items-center justify-center lg:justify-end animate-in fade-in slide-in-from-right duration-700 w-full'>
+          <div className='w-full max-w-[500px]'>
+            <div className='bg-white/70 backdrop-blur-2xl rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-white p-8 sm:p-12 relative'>
               
               <div className='relative'>
-                {/* Mobile-only Logo */}
-                <div className='lg:hidden flex flex-col items-center gap-4 mb-10'>
-                  <div className='w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl shadow-indigo-500/20'>
-                    <div className='w-6 h-6 border-[3px] border-white rounded-full' />
-                  </div>
-                  <h1 className="text-3xl font-black text-slate-900 tracking-tight">Nuora</h1>
-                </div>
-
                 <div className="text-center mb-8">
-                    <h2 className='text-3xl font-bold text-slate-900 tracking-tight'>Create Account</h2>
-                    <p className='text-slate-500 mt-2 font-medium'>Join our exclusive community</p>
+                    <h2 className='text-3xl font-black text-slate-900 tracking-tight'>Create Account</h2>
+                    <p className='text-slate-500 mt-2 font-bold'>Join our exclusive community</p>
                 </div>
                 
                 <div className="w-full">

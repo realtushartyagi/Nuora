@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import MainLayout from '@/components/MainLayout'
 import { api } from '@/lib/api'
 import { useAuth, UserButton } from '@clerk/nextjs'
 import { Image as ImageIcon, Video, X, Send } from 'lucide-react'
@@ -52,7 +51,7 @@ export default function CreatePostPage() {
       })
       if (res.data.success) {
         toast.success('Post created successfully!')
-        router.push('/')
+        router.push('/authenticated')
       } else {
         toast.error(res.data.message)
       }
@@ -65,8 +64,7 @@ export default function CreatePostPage() {
   }
 
   return (
-    <MainLayout>
-      <div className="max-w-2xl mx-auto py-8 px-4">
+    <div className="max-w-2xl mx-auto py-8 px-4">
         <div className='mb-8'>
           <h1 className="text-3xl font-bold text-slate-900">Create Post</h1>
           <p className="text-slate-500 mt-1 font-medium">Share your thoughts with the world</p>
@@ -126,6 +124,5 @@ export default function CreatePostPage() {
           </div>
         </form>
       </div>
-    </MainLayout>
-  )
-}
+    )
+  }
