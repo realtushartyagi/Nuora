@@ -19,7 +19,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
     <div className={`w-64 lg:w-72 bg-white border-r border-slate-50 flex flex-col justify-between items-stretch max-md:absolute top-0 bottom-0 z-[60] ${sidebarOpen ? 'translate-x-0 shadow-xl' : 'max-md:-translate-x-full'} transition-all duration-300 ease-in-out`}>
       <div className='w-full'>
         <div onClick={() => { router.push('/authenticated'); setSidebarOpen(false); }} className='px-7 py-8 cursor-pointer group'>
-            <h1 className="text-3xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent group-hover:opacity-80 transition-all tracking-tight">Nuora</h1>
+            <h1 className="text-5xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent group-hover:opacity-80 transition-all tracking-tight">Nuora</h1>
         </div>
 
         <MenuItems setSidebarOpen={setSidebarOpen} />

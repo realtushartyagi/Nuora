@@ -3,10 +3,12 @@
 import React from 'react'
 import { User, Bell, Shield, HelpCircle, LogOut, ChevronRight, Globe, Moon, LucideIcon } from 'lucide-react'
 import { useClerk } from '@clerk/nextjs'
+import Link from 'next/link'
 
 interface SettingItem {
   label: string;
   sub?: string;
+  to: string;
   Icon: LucideIcon;
   color: string;
   bgColor: string;
@@ -21,22 +23,22 @@ const settingSections: SettingSection[] = [
   {
     title: 'Account Settings',
     items: [
-      { label: 'Edit Profile', Icon: User, color: 'text-indigo-600', bgColor: 'bg-indigo-50' },
-      { label: 'Privacy & Security', Icon: Shield, color: 'text-green-600', bgColor: 'bg-green-50' },
-      { label: 'Notifications', Icon: Bell, color: 'text-orange-600', bgColor: 'bg-orange-50' },
+      { label: 'Edit Profile', to: '/authenticated/settings/edit-profile', Icon: User, color: 'text-indigo-600', bgColor: 'bg-indigo-50' },
+      { label: 'Privacy & Security', to: '/authenticated/settings/privacy', Icon: Shield, color: 'text-emerald-600', bgColor: 'bg-emerald-50' },
+      { label: 'Notifications', to: '/authenticated/settings/notifications', Icon: Bell, color: 'text-amber-600', bgColor: 'bg-amber-50' },
     ]
   },
   {
     title: 'Preferences',
     items: [
-      { label: 'Appearance', sub: 'Light Mode', Icon: Moon, color: 'text-indigo-600', bgColor: 'bg-indigo-50' },
-      { label: 'Language', sub: 'English', Icon: Globe, color: 'text-blue-600', bgColor: 'bg-blue-50' },
+      { label: 'Appearance', sub: 'Light Mode', to: '/authenticated/settings/appearance', Icon: Moon, color: 'text-purple-600', bgColor: 'bg-purple-50' },
+      { label: 'Language', sub: 'English', to: '/authenticated/settings/language', Icon: Globe, color: 'text-sky-600', bgColor: 'bg-sky-50' },
     ]
   },
   {
     title: 'Support',
     items: [
-      { label: 'Help Center', Icon: HelpCircle, color: 'text-slate-600', bgColor: 'bg-slate-50' },
+      { label: 'Help Center', to: '/authenticated/settings/support', Icon: HelpCircle, color: 'text-slate-600', bgColor: 'bg-slate-50' },
     ]
   }
 ]
@@ -57,8 +59,9 @@ export default function SettingsPage() {
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 ml-2">{section.title}</h3>
             <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden divide-y divide-slate-50">
               {section.items.map((item, i) => (
-                <button 
+                <Link 
                   key={i} 
+                  href={item.to}
                   className="w-full flex items-center justify-between p-5 hover:bg-slate-50 transition-all text-left group"
                 >
                   <div className="flex items-center gap-4">
@@ -71,7 +74,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
-                </button>
+                </Link>
               ))}
             </div>
           </div>
