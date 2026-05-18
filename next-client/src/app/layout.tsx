@@ -28,5 +28,9 @@ export default function RootLayout({
     </html>
   );
 }
-// Triggering Vercel Build with updated Root Directory
-// Force deployment sync: 05/18/2026 23:28:48
+// ============================================================
+// VERCEL DEPLOYMENT CACHE INVALIDATION
+// Updated: 05/18/2026 23:39:34
+// Build ID: 4605bde-vercel-sync-rebuild
+// This forces complete rebuild of responsive login/signup pages
+// ============================================================

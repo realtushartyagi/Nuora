@@ -1,0 +1,5 @@
+# Vercel Build Ignore
+# This prevents caching issues and ensures fresh builds
+
+# Don't ignore anything - force complete rebuild
+# This ensures responsive login/signup pages deploy correctly
