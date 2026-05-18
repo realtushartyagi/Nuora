@@ -5,18 +5,18 @@ import { SignUp } from '@clerk/nextjs'
 
 const SignUpPage = () => {
   return (
-    <div className='min-h-screen w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] relative font-outfit px-4 sm:px-6 lg:px-8 py-0'>
+    <div className='min-h-screen w-full overflow-y-auto flex items-center justify-center bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] relative font-outfit px-4 sm:px-6 lg:px-8 py-10 md:py-20'>
 
       {/* Background decoration elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-indigo-200/20 blur-[120px] animate-pulse" />
+      <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-indigo-200/20 blur-[120px] animate-pulse pointer-events-none" />
 
-      <div className="absolute bottom-[-20%] right-[-20%] w-[40%] h-[40%] rounded-full bg-blue-200/20 blur-[120px] animate-pulse" />
+      <div className="absolute bottom-[-20%] right-[-20%] w-[40%] h-[40%] rounded-full bg-blue-200/20 blur-[120px] animate-pulse pointer-events-none" />
 
       {/* Main Container */}
-      <div className='w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center z-10'>
+      <div className='w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center z-10'>
 
         {/* Left Side: Branding */}
-        <div className='flex flex-col space-y-8 lg:space-y-12 py-8 lg:py-0 animate-in fade-in slide-in-from-left duration-700'>
+        <div className='flex flex-col space-y-8 lg:space-y-12 py-4 lg:py-0 animate-in fade-in slide-in-from-left duration-700'>
 
           {/* Logo */}
           <div className='flex items-center gap-4 justify-center lg:justify-start'>
@@ -46,7 +46,7 @@ const SignUpPage = () => {
             </p>
           </div>
 
-          {/* Feature Highlights */}
+          {/* Stats Cards */}
           <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6 max-w-md mx-auto lg:mx-0">
 
             <div className="p-4 md:p-6 bg-white/60 backdrop-blur-md rounded-[2rem] border border-white/50 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
@@ -71,7 +71,7 @@ const SignUpPage = () => {
           </div>
         </div>
 
-        {/* Right Side: Sign Up Card */}
+        {/* Right Side: Login Card */}
         <div className='flex items-center justify-center lg:justify-end animate-in fade-in slide-in-from-right duration-700 w-full'>
 
           <div className='w-full max-w-md sm:max-w-lg mx-auto'>
@@ -87,12 +87,12 @@ const SignUpPage = () => {
                   </h2>
 
                   <p className='text-slate-500 mt-2 font-bold'>
-                    Join our exclusive community
+                    Join your social universe
                   </p>
                 </div>
 
                 {/* Clerk SignUp */}
-                <div className="w-full">
+                <div className="w-full flex justify-center">
 
                   <SignUp
                     path="/sign-up"
@@ -100,10 +100,10 @@ const SignUpPage = () => {
                     signInUrl="/login"
                     appearance={{
                       elements: {
-                        rootBox: 'w-full flex justify-center',
+                        rootBox: 'w-full flex justify-center mx-auto',
 
                         card:
-                          'bg-transparent shadow-none border-0 p-0 w-full',
+                          'bg-transparent shadow-none border-0 p-0 w-full max-w-[400px]',
 
                         header: 'hidden',
 

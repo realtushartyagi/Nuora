@@ -5,18 +5,17 @@ import { SignIn } from '@clerk/nextjs'
 
 const LoginPage = () => {
   return (
-    <div className='min-h-screen w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] relative font-outfit px-4 sm:px-6 lg:px-8 py-0'>
+    <div className='min-h-screen w-full overflow-y-auto flex items-center justify-center bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] relative font-outfit px-4 sm:px-6 lg:px-8 py-10 md:py-20'>
 
       {/* Background decoration elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-indigo-200/20 blur-[120px] animate-pulse" />
-
-      <div className="absolute bottom-[-20%] right-[-20%] w-[40%] h-[40%] rounded-full bg-blue-200/20 blur-[120px] animate-pulse" />
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-200/30 blur-[120px] animate-pulse pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-200/30 blur-[120px] animate-pulse pointer-events-none" />
 
       {/* Main Container */}
-      <div className='w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center z-10'>
+      <div className='w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center z-10'>
 
         {/* Left Side: Branding */}
-        <div className='flex flex-col space-y-8 lg:space-y-12 py-8 lg:py-0 animate-in fade-in slide-in-from-left duration-700'>
+        <div className='flex flex-col space-y-8 lg:space-y-12 py-4 lg:py-0 animate-in fade-in slide-in-from-left duration-700'>
 
           {/* Logo */}
           <div className='flex items-center gap-4 justify-center lg:justify-start'>
@@ -29,13 +28,11 @@ const LoginPage = () => {
             </h1>
           </div>
 
-          {/* Hero Content */}
+          {/* Heading */}
           <div className='space-y-4 md:space-y-6 text-center lg:text-left'>
-
             <h2 className='text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-slate-900 leading-tight tracking-tight'>
               Where Connections
               <br className='hidden md:block' />
-
               <span className='bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent'>
                 Matter More.
               </span>
@@ -46,8 +43,8 @@ const LoginPage = () => {
             </p>
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6 max-w-md mx-auto lg:mx-0">
+          {/* Feature Highlights */}
+          <div className="grid grid-cols-2 gap-4 md:gap-6 pt-6 md:pt-8 max-w-md mx-auto lg:mx-0">
 
             <div className="p-4 md:p-6 bg-white/60 backdrop-blur-md rounded-[2rem] border border-white/50 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
               <p className="text-2xl sm:text-3xl font-black text-slate-900">
@@ -91,24 +88,23 @@ const LoginPage = () => {
                   </p>
                 </div>
 
-                {/* Clerk SignIn */}
-                <div className="w-full">
-
+                {/* Clerk Sign In */}
+                <div className="w-full flex justify-center">
                   <SignIn
                     path="/login"
                     routing="path"
                     signUpUrl="/sign-up"
                     appearance={{
                       elements: {
-                        rootBox: 'w-full flex justify-center',
+                        rootBox: 'w-full flex justify-center mx-auto',
 
                         card:
-                          'bg-transparent shadow-none border-0 p-0 w-full',
+                          'bg-transparent shadow-none border-0 p-0 w-full max-w-[400px]',
 
                         header: 'hidden',
 
                         socialButtonsBlockButton:
-                          'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all h-14 rounded-2xl shadow-sm mb-4 active:scale-[0.98]',
+                          'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all h-14 rounded-2xl shadow-sm mb-4 active:scale-[0.98] w-full',
 
                         socialButtonsBlockButtonText:
                           'font-bold text-[16px]',
@@ -123,10 +119,10 @@ const LoginPage = () => {
                           'text-slate-700 font-bold mb-2 text-[13px] ml-1',
 
                         formFieldInput:
-                          'w-full bg-slate-50/50 border-slate-200 text-slate-900 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all h-13 rounded-2xl text-base px-4 font-medium',
+                          'w-full bg-slate-50/50 border-slate-200 text-slate-900 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all h-13 rounded-2xl text-base px-4 font-medium box-border',
 
                         formButtonPrimary:
-                          'bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-xl hover:shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300 h-13 text-[16px] font-bold mt-4 rounded-2xl normal-case',
+                          'bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-xl hover:shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300 h-13 text-[16px] font-bold mt-4 rounded-2xl normal-case w-full',
 
                         footerActionLink:
                           'text-indigo-600 hover:text-indigo-700 font-bold ml-1 transition-colors',
@@ -143,11 +139,15 @@ const LoginPage = () => {
                         footer:
                           'mt-8 border-t border-slate-100 pt-8 flex justify-center',
 
+                        formFieldErrorText:
+                          'text-red-600 text-sm font-medium',
+
                         clerkBranding: 'hidden'
                       }
                     }}
                   />
                 </div>
+
               </div>
             </div>
           </div>
