@@ -1,0 +1,28 @@
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: nuora_server
+    ports:
+      - "4000:4000"
+    # Will load environment variables from the server's .env file if it exists
+    env_file:
+      - ./server/.env
+    restart: always
+
+  client:
+    build:
+      context: ./next-client
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_BACKEND_URL=http://localhost:4000
+    container_name: nuora_client
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:4000
+    depends_on:
+      - server
+    restart: always
